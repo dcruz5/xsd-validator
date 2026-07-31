@@ -217,7 +217,6 @@ module Sch
       when 'urn:fdc:peppol.eu:poacc:trns:order_change:3'
         %w(PEPPOLBIS-T114.sch)
 
-
       # PEPPOL Order Cancellation transaction 3.0
       when 'urn:fdc:peppol.eu:poacc:trns:order_cancellation:3'
         %w(PEPPOLBIS-T115.sch)
@@ -225,6 +224,10 @@ module Sch
       # PEPPOL Order Response Advanced transaction 3.0
       when 'urn:fdc:peppol.eu:poacc:trns:order_response_advanced:3'
         %w(PEPPOLBIS-T116.sch)
+
+      # SG BIS Order balance 1
+      when 'urn:fdc:imda.gov.sg:trns:order_balance:1'
+        %w(SGBIS-TOB.sch)
 
       # CIUS-PT portugal
       when 'urn:cen.eu:en16931:2017#compliant#urn:feap.gov.pt:CIUS-PT::v1.0'
