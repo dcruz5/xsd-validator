@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ReportDocument>
+    <Id>69280</Id>
+    <Name>B2Brouter Global S.L.-Declaration-2026-07-28</Name>
+    <IssueDateTime>
+      <DateTimeString>20260729113347</DateTimeString>
+    </IssueDateTime>
+    <TypeCode>IN</TypeCode>
+    <Sender>
+      <Id schemeId="0238">0327</Id>
+      <Name>B2Brouter</Name>
+      <RoleCode>WK</RoleCode>
+      <URIUniversalCommunication>
+        <URIID>support@b2brouter.net</URIID>
+      </URIUniversalCommunication>
+    </Sender>
+    <Issuer>
+      <Id schemeId="0002">430486880</Id>
+      <Name>FRANÇA FAIL TEST ENTERPRISE</Name>
+      <RoleCode>BY</RoleCode>
+      <URIUniversalCommunication>
+        <URIID>TEST@test.com</URIID>
+      </URIUniversalCommunication>
+    </Issuer>
+  </ReportDocument>
+  <TransactionsReport>
+    <ReportPeriod>
+      <StartDate>20260721</StartDate>
+      <EndDate>20260729</EndDate>
+    </ReportPeriod>
+    <Invoice>
+      <ID>Webinar 395</ID>
+      <IssueDate>20260728</IssueDate>
+      <TypeCode>380</TypeCode>
+      <CurrencyCode>EUR</CurrencyCode>
+      <DueDate>20260728</DueDate>
+      <TaxDueDateTypeCode>3</TaxDueDateTypeCode>
+      <IncludedNote>
+        <Subject>PMT</Subject>
+        <Content>a</Content>
+      </IncludedNote>
+      <BusinessProcess>
+        <ID>M1</ID>
+        <TypeID>urn.cpro.gouv.fr:1p0:ereporting</TypeID>
+      </BusinessProcess>
+      <Seller>
+        <CompanyId schemeId="0223">ESB63276174</CompanyId>
+        <TaxRegistrationId qualifyingId="VAT">ESB63276174</TaxRegistrationId>
+        <PostalAddress>
+          <CountryId>ES</CountryId>
+        </PostalAddress>
+      </Seller>
+      <Buyer>
+        <CompanyId schemeId="0002">430486880</CompanyId>
+        <TaxRegistrationId qualifyingId="VAT"/>
+        <PostalAddress>
+          <CountryId>FR</CountryId>
+        </PostalAddress>
+      </Buyer>
+      <MonetaryTotal>
+        <TaxExclusiveAmount>15.00</TaxExclusiveAmount>
+        <TaxAmount CurrencyCode="EUR">3.15</TaxAmount>
+      </MonetaryTotal>
+      <TaxSubTotal>
+        <TaxableAmount>15.00</TaxableAmount>
+        <TaxAmount>3.15</TaxAmount>
+        <TaxCategory>
+          <Code>S</Code>
+          <Percent>21.00</Percent>
+        </TaxCategory>
+      </TaxSubTotal>
+    </Invoice>
+  </TransactionsReport>
+</Report>

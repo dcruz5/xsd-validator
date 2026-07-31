@@ -91,6 +91,11 @@ module Sch
       else
         doc_nokogiri = Nokogiri::XML(doc) { |c| c.huge }
       end
+      # F10 e-reporting carries no CustomizationID; keyed on the Report root instead.
+      if doc_nokogiri.root&.name == 'Report' && doc_nokogiri.root.at_xpath('ReportDocument')
+        return %w(BR-FR-Flux10-Schematron_V1.0.sch)
+      end
+
       # Assume UBL or CII
       # Read the document-level CustomizationID (direct child of the root element). Using the
       # descendant axis (//) would also match a CustomizationID inside an embedded document - e.g.
