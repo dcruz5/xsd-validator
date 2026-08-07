@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archive xmlns="http://xml.datev.de/bedi/tps/document/v06.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="6.0" generatingSystem="b2brouter">
+  <header>
+    <date>2026-05-13T10:00:00</date>
+  </header>
+  <content>
+    <document>
+      <extension xsi:type="accountsReceivableLedger" datafile="invoice_123.xml">
+        <property key="1" value="2026-05"/>
+        <property key="3" value="Ausgangsrechnungen"/>
+      </extension>
+      <extension xsi:type="File" name="invoice_123.pdf"/>
+      <repository>
+        <level id="1" name="b2brouter"/>
+        <level id="2" name="Belege"/>
+        <level id="3" name="2026-05"/>
+      </repository>
+    </document>
+  </content>
+</archive>

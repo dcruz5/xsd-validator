@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LedgerImport xmlns="http://xml.datev.de/bedi/tps/ledger/v060" version="6.0" generator_info="b2brouter" generating_system="b2brouter" xml_data="Kopie nur zur Verbuchung berechtigt nicht zum Vorsteuerabzug">
+  <consolidate consolidatedAmount="119.00" consolidatedDate="2026-05-13" consolidatedInvoiceId="F-2026-001" consolidatedCurrencyCode="EUR">
+    <accountsReceivableLedger>
+      <date>2026-05-13</date>
+      <amount>119.00</amount>
+      <tax>19.00</tax>
+      <currencyCode>EUR</currencyCode>
+      <invoiceId>F-2026-001</invoiceId>
+      <bookingText>Musterkunde GmbH F-2026-001</bookingText>
+      <dueDate>2026-06-13</dueDate>
+      <customerName>Musterkunde GmbH</customerName>
+      <customerCity>Berlin</customerCity>
+    </accountsReceivableLedger>
+  </consolidate>
+</LedgerImport>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LedgerImport xmlns="http://xml.datev.de/bedi/tps/ledger/v060" version="6.0" generator_info="b2brouter" generating_system="b2brouter" xml_data="Kopie nur zur Verbuchung berechtigt nicht zum Vorsteuerabzug">
+  <consolidate consolidatedAmount="0.00" consolidatedDate="2026-05-13" consolidatedCurrencyCode="EUR">
+    <accountsReceivableLedger>
+      <date>2026-05-13</date>
+      <amount>0.00</amount>
+      <currencyCode>EUR</currencyCode>
+      <invoiceId>F-2026-001</invoiceId>
+    </accountsReceivableLedger>
+  </consolidate>
+</LedgerImport>
