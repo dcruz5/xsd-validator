@@ -37,6 +37,16 @@ RSpec.describe Xsd::Validator do
     expect { xsd_validate!(doc) }.to raise_error(Xsd::Validator::ValidationError, /UUID/)
   end
 
+  it 'raises ValidationError for a DATEV document.xml missing its header' do
+    doc=File.read('spec/files/xsd/datev/document_v060_wrong.xml')
+    expect { xsd_validate!(doc) }.to raise_error(Xsd::Validator::ValidationError, /header/)
+  end
+
+  it 'raises ValidationError for a DATEV LedgerImport with a 0.00 amount' do
+    doc=File.read('spec/files/xsd/datev/ledger_import_v060_wrong.xml')
+    expect { xsd_validate!(doc) }.to raise_error(Xsd::Validator::ValidationError, /amount/)
+  end
+
   it 'validates spec files' do
     Dir["spec/files/xsd/**/*.xml"].each do |filename|
       next if filename =~ /wrong/
@@ -72,6 +82,8 @@ RSpec.describe Xsd::Validator do
       'spec/files/xsd/dgfip/tax_report_f10/acquisitions.xml' => '/dgfip/tax_report_f10/ereporting.xsd',
       'spec/files/xsd/dgfip/tax_report_f10/encaissements.xml' => '/dgfip/tax_report_f10/ereporting.xsd',
       'spec/files/xsd/sk-tdd.xml' => /sk_tdd\/Peppol-Slovak-Republic-TDD.xsd/,
+      'spec/files/xsd/datev/document_v060.xml' => /datev\/Document_v060\.xsd/,
+      'spec/files/xsd/datev/ledger_import_v060.xml' => /datev\/Belegverwaltung_online_ledger_import_v060\.xsd/,
 
     }
     files.each do |file_path, rgex_xsd_path|
