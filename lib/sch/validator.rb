@@ -91,6 +91,11 @@ module Sch
       else
         doc_nokogiri = Nokogiri::XML(doc) { |c| c.huge }
       end
+      # F10 e-reporting carries no CustomizationID; keyed on the Report root instead.
+      if doc_nokogiri.root&.name == 'Report' && doc_nokogiri.root.at_xpath('ReportDocument')
+        return %w(BR-FR-Flux10-Schematron_V1.0.sch)
+      end
+
       # Assume UBL or CII
       # Read the document-level CustomizationID (direct child of the root element). Using the
       # descendant axis (//) would also match a CustomizationID inside an embedded document - e.g.
@@ -217,7 +222,6 @@ module Sch
       when 'urn:fdc:peppol.eu:poacc:trns:order_change:3'
         %w(PEPPOLBIS-T114.sch)
 
-
       # PEPPOL Order Cancellation transaction 3.0
       when 'urn:fdc:peppol.eu:poacc:trns:order_cancellation:3'
         %w(PEPPOLBIS-T115.sch)
@@ -225,6 +229,10 @@ module Sch
       # PEPPOL Order Response Advanced transaction 3.0
       when 'urn:fdc:peppol.eu:poacc:trns:order_response_advanced:3'
         %w(PEPPOLBIS-T116.sch)
+
+      # SG BIS Order balance 1
+      when 'urn:fdc:imda.gov.sg:trns:order_balance:1'
+        %w(SGBIS-TOB.sch)
 
       # CIUS-PT portugal
       when 'urn:cen.eu:en16931:2017#compliant#urn:feap.gov.pt:CIUS-PT::v1.0'

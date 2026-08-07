@@ -56,6 +56,17 @@ RSpec.describe Sch::Validator do
     expect { sch_validate!(doc) }.to raise_error(Sch::Validator::ValidationError, /FATAL: .*ibr-tdd-06/)
   end
 
+  # G1.24 admits French rates only, no exception for foreign suppliers.
+  it 'raises ValidationError for an F10 report carrying a non-French VAT rate' do
+    doc=File.read('spec/files/sch/f10/f10-report-bi2b-foreign-rate-wrong.xml')
+    expect { sch_validate!(doc) }.to raise_error(Sch::Validator::ValidationError, /FATAL: .*G1\.24/)
+  end
+
+  it 'raises ValidationError for an F10 report with an unknown transmission type' do
+    doc=File.read('spec/files/sch/f10/f10-report-transactions-wrong.xml')
+    expect { sch_validate!(doc) }.to raise_error(Sch::Validator::ValidationError, /FATAL: .*G8\.01/)
+  end
+
   it 'does not raise for a valid AE PINT Invoice' do
     doc=File.read('spec/files/sch/PINT_AE_invoice.xml')
     expect { sch_validate!(doc) }.not_to raise_error
@@ -95,8 +106,12 @@ RSpec.describe Sch::Validator do
       'spec/files/sch/invoice-ubl-cius-fr.xml' => ['BR-FR-Flux2-Schematron-UBL_V1.3.1.sch'],
       'spec/files/sch/invoice-cii-cius-fr.xml' => ['BR-FR-Flux2-Schematron-CII_V1.3.1.sch'],
       'spec/files/sch/cdar/cdar_1_deposee.xml' => ['BR-FR-CDV-Schematron-CDAR_V1.3.1.sch'],
+      'spec/files/sch/f10/f10-report-transactions.xml' => ['BR-FR-Flux10-Schematron_V1.0.sch'],
+      'spec/files/sch/f10/f10-report-payments.xml' => ['BR-FR-Flux10-Schematron_V1.0.sch'],
+      'spec/files/sch/f10/f10-report-bi2b-foreign-rate-wrong.xml' => ['BR-FR-Flux10-Schematron_V1.0.sch'],
       'spec/files/sch/PINT_AE_invoice.xml' => ['PINT-billing-1-shared.sch', 'PINT-AE-billing-1-aligned.sch'],
       'spec/files/sch/sk-tdd.xml' => ['Peppol-Slovak-Republic-TDD.sch'],
+      'spec/files/sch/SG_order_balance.xml' => ['SGBIS-TOB.sch'],
     }
     files.each do |file_path, schematrons|
       it "#{file_path} checks with #{schematrons}" do
