@@ -67,6 +67,21 @@ RSpec.describe Sch::Validator do
     expect { sch_validate!(doc) }.to raise_error(Sch::Validator::ValidationError, /FATAL: .*G8\.01/)
   end
 
+  it 'raises ValidationError for an F1 extract identifying a party without SIREN' do
+    doc=File.read('spec/files/sch/f1/f1-extract-scheme-wrong.xml')
+    expect { sch_validate!(doc) }.to raise_error(Sch::Validator::ValidationError, /FATAL: .*G1\.63/)
+  end
+
+  it 'raises ValidationError for an F1 extract with a rate outside the French legal list' do
+    doc=File.read('spec/files/sch/f1/f1-extract-vat-rate-wrong.xml')
+    expect { sch_validate!(doc) }.to raise_error(Sch::Validator::ValidationError, /FATAL: .*G1\.24/)
+  end
+
+  it 'raises ValidationError for an F1 extract with an exempt breakdown missing its code' do
+    doc=File.read('spec/files/sch/f1/f1-extract-exempt-wrong.xml')
+    expect { sch_validate!(doc) }.to raise_error(Sch::Validator::ValidationError, /FATAL: .*G1\.41/)
+  end
+
   it 'does not raise for a valid AE PINT Invoice' do
     doc=File.read('spec/files/sch/PINT_AE_invoice.xml')
     expect { sch_validate!(doc) }.not_to raise_error
@@ -109,6 +124,10 @@ RSpec.describe Sch::Validator do
       'spec/files/sch/f10/f10-report-transactions.xml' => ['BR-FR-Flux10-Schematron_V1.0.sch'],
       'spec/files/sch/f10/f10-report-payments.xml' => ['BR-FR-Flux10-Schematron_V1.0.sch'],
       'spec/files/sch/f10/f10-report-bi2b-foreign-rate-wrong.xml' => ['BR-FR-Flux10-Schematron_V1.0.sch'],
+      'spec/files/sch/f1/f1-extract-invoice.xml' => ['PPF_Flux1_UBL_1_8_DEMARRAGE_v0_2.sch'],
+      'spec/files/sch/f1/f1-extract-creditnote.xml' => ['PPF_Flux1_UBL_1_8_DEMARRAGE_v0_2.sch'],
+      # Non-EUR F1 resolves too — the patched G1.53 validates it instead of crashing.
+      'spec/files/f1/f1-extract-foreign-currency.xml' => ['PPF_Flux1_UBL_1_8_DEMARRAGE_v0_2.sch'],
       'spec/files/sch/PINT_AE_invoice.xml' => ['PINT-billing-1-shared.sch', 'PINT-AE-billing-1-aligned.sch'],
       'spec/files/sch/sk-tdd.xml' => ['Peppol-Slovak-Republic-TDD.sch'],
       'spec/files/sch/SG_order_balance.xml' => ['SGBIS-TOB.sch'],
