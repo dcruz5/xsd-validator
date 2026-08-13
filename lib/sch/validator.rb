@@ -319,6 +319,12 @@ module Sch
       # which runs only the TDD schematron).
       when 'urn:peppol:taxdata:sk-1'
         %w(Peppol-Slovak-Republic-TDD.sch)
+
+      # PPF Flux 1 e-invoicing extract (Profil de Base) — trajectoire DÉMARRAGE.
+      # AIFE delivery v1.0 (Note de conception, 31/07/2026); files keep AIFE's own
+      # filenames, whose _v0_2 suffix does not match the delivered version.
+      when 'urn.cpro.gouv.fr:1p0:einvoicingextract#Base'
+        %w(PPF_Flux1_UBL_1_8_DEMARRAGE_v0_2.sch)
       else
         profile_id = doc_nokogiri.xpath('//cbc:ProfileID', cbc: CBC).text
 
